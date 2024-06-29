@@ -45,4 +45,37 @@ CREATE TABLE global_contacts (
     name VARCHAR(100),
     spam_likelihood INT DEFAULT 0
 );
+```
+
+## Usage Guide
+
+1. First Home Page
+![image](https://github.com/imadchougle/Full-Developer-Intern-Assignment/assets/54437743/119697d8-29a9-443b-a4fd-41874f0ef1b0)
+
+2. Registration Form
+
+![image](https://github.com/imadchougle/Full-Developer-Intern-Assignment/assets/54437743/a0b6542c-29c4-4f7a-bdc9-cac2af278d82)
+
+IF USER ALREADY EXISTS THEN ERROR
+
+![image](https://github.com/imadchougle/Full-Developer-Intern-Assignment/assets/54437743/2de8713d-131b-438a-a44d-5a77b92c3fb9)
+
+
+
+3. Verify OTP
+
+![image](https://github.com/imadchougle/Full-Developer-Intern-Assignment/assets/54437743/44a22c9c-8a68-4977-b3d2-bf1244398bf7)
+
+If Wrong otp then popup
+
+![image](https://github.com/imadchougle/Full-Developer-Intern-Assignment/assets/54437743/536a3df8-5577-406a-9b65-4de5c9c8b3f9)
+
+If Success 
+
+![image](https://github.com/imadchougle/Full-Developer-Intern-Assignment/assets/54437743/723214e8-60cc-4597-81c4-b464fe69831a)
+
+
+
+
+
 
