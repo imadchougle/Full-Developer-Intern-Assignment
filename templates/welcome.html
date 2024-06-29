@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        h2, h3 {
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        input[type="text"], select {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
+        a {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            background-color: #950a0a;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #ff0000;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hi {{ name }}, Welcome</h1>
+
+        <h3>Add Personal Contact</h3>
+        <form method="POST" action="{{ url_for('welcome') }}">
+            <input type="text" name="contact_name" placeholder="Contact Name" required>
+            <input type="text" name="contact_phone" placeholder="Contact Phone" required>
+            <input type="submit" value="Add Contact">
+        </form>
+
+        <h2>Your Contacts</h2>
+        <ul>
+            {% for contact in contacts %}
+                <li>{{ contact[0] }}: {{ contact[1] }}</li>
+            {% endfor %}
+        </ul>
+
+        <h3>Search Global Contacts</h3>
+        <form method="POST" action="{{ url_for('welcome') }}">
+            <input type="text" name="search_query" placeholder="Search by name or phone" required>
+            <select name="search_by">
+                <option value="name">Name</option>
+                <option value="phone">Phone</option>
+            </select>
+            <input type="submit" name="search" value="Search">
+        </form>
+
+        {% if search_results %}
+        <h3>Search Results</h3>
+        <table>
+            <tr>
+                <th>Phone Number</th>
+                <th>Name</th>
+                <th>Spam Likelihood</th>
+            </tr>
+            {% for result in search_results %}
+                <tr>
+                    <td>{{ result[0] }}</td>
+                    <td>{{ result[1] }}</td>
+                    <td>{{ result[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+
+        <h3>Mark a Number as Spam</h3>
+        <form method="POST" action="{{ url_for('mark_spam') }}">
+            <input type="text" name="spam_phone" placeholder="Phone Number" required>
+            <input type="submit" value="Mark as Spam ⛔️">
+        </form>
+
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+</body>
+</html>
