@@ -1,5 +1,11 @@
 # Full-Developer-Intern-Assignment
 
+## Technolgies used
+
+1. Frontend - Html, Css, Javascript
+2. Backend - Flask
+3. Database - MYSql
+
 
 ## Prerequisites
 - Python 3.11
