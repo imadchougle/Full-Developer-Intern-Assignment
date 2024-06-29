@@ -107,7 +107,11 @@ If Success
 
 
 8. Email ID special seach function when the User is logged in and the user is the their personal contacts List then only the email id will be shown;
-   In this case Imad Chougle has added Raju in his 
+   In this case Imad Chougle has added Raju in his personal account, and Raju is registered user and has Imad Chougle in his personal contact,
+   now Imad Chougle is logged in and searches for number. in this case the condition is satisfied and the email is shown
+
+   ![image](https://github.com/imadchougle/Full-Developer-Intern-Assignment/assets/54437743/a7f4bea6-ebc1-40cc-9be7-c2ca7311494c)
+
 
 
 
