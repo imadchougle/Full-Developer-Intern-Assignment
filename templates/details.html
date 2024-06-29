@@ -1,33 +1,97 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Details</title>
+    <title>Contact Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 60%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        button[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .details-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        ul li {
+            margin-bottom: 5px;
+        }
+        .email-info {
+            margin-top: 10px;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>Enter Phone Number</h1>
+        <h1>Contact Details</h1>
         <form method="POST" action="/details">
             <input type="text" name="phone" placeholder="Enter phone number">
             <button type="submit">Search</button>
         </form>
 
         {% if contact_details %}
-            <h1>Details for {{ contact_details[0][1] }}</h1>
-            <p>Phone: {{ contact_details[0][0] }}</p>
-            <p>Spam Likelihood: {{ contact_details[0][2] }}</p>
+            <div class="details-container">
+                <h2>Details for {{ contact_details[0][1] }}</h2>
+                <p>Phone: {{ contact_details[0][0] }}</p>
+                <p>Spam Likelihood: {{ contact_details[0][2] }}</p>
 
-            {% if user_email %}
-                <p>Email: {{ user_email[0] }}</p>
-            {% else %}
-                <p>Email: Not available</p>
-            {% endif %}
+                {% if user_email %}
+                    <p class="email-info">Email: {{ user_email[0] }}</p>
+                {% else %}
+                    <p class="email-info">Email: Not available</p>
+                {% endif %}
 
-            <h2>Other names for this phone number:</h2>
-            <ul>
-                {% for contact in contact_details %}
-                    <li>{{ contact[1] }}</li>
-                {% endfor %}
-            </ul>
+                <h3>Other names associated with this phone number:</h3>
+                <ul>
+                    {% for contact in contact_details %}
+                        <li>{{ contact[1] }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         {% endif %}
     </div>
 </body>
